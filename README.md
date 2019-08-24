@@ -26,14 +26,14 @@ For processing the XML there are may  method. Some of method are :
 	SAXParser parser = factory.newSAXParser();
 	parser.parse(new File("resource\\po.xml"), handler);
 	```
- - [Example  of SAX Parser Java file](PrintSAX\src\com\ps\test\PSTest.java)
+ - [Example  of SAX Parser Java file](PrintSAX/src/com/ps/test/PSTest.java)
  - We need Event Hanlder. So extends DefaultHandler and override the method: 
 	- startDocument(): Call at the start of Document or XML.
 	- endDocument(): Call at the end of Document or XML.
 	- startElement(): Call at the element starting tag.
 	- endElement(): Call at the end element tag.
 	- character(): calll between the elemnt tag.
- - [Example of event Handle Java file](PrintSAX\src\com\ps\handler\PrintHandler.java)
+ - [Example of event Handle Java file](PrintSAX/src/com/ps/handler/PrintHandler.java)
  
  
 ## XML Validating:
@@ -49,7 +49,7 @@ For processing the XML there are may  method. Some of method are :
 		factory.setSchema(poSchema);
 		factory.setValidating(true);
 	```
- -  - [Example  of XML Java validation file](ValidateXml\src\com\vx\test\POValidatorTest.java)
+ -  - [Example  of XML Java validation file](ValidateXml/src/com/vx/test/POValidatorTest.java)
 
  
 ## DOM:
@@ -69,7 +69,7 @@ For processing the XML there are may  method. Some of method are :
 				.parse(new File(<XML FILE>));
 	```
 - When  the XML get loaded into the node Travel the node just like tree Traversal.
- - [Example Of DOM Traversal Java Code](DomTraversal\src\com\dt\test\DomTraversalTest.java)
+ - [Example Of DOM Traversal Java Code](DomTraversal/src/com/dt/test/DomTraversalTest.java)
  
  
  
