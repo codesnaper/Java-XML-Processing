@@ -20,9 +20,38 @@ For processing the XML there are may  method. Some of method are :
 	 2. **Listner** : It will listen the event from the source.
 	 3. **Event Handler**: One event listen it will be given to event handler for processing the event.
  - Process XML elements sequentially from top to the bottom. While processing the document, it places a pointer to the document and increments sequentially from the top.
+ - We need the Sax Parser for parsing the XML . But we dont Know so we will go to SAX Parser Factory. Then we will provide XML and handler for parsing the XML.
+	```
+	SAXParserFactory factory = SAXParserFactory.newInstance();
+	SAXParser parser = factory.newSAXParser();
+	parser.parse(new File("resource\\po.xml"), handler);
+	```
+ - [Example  of SAX Parser Java file](PrintSAX\src\com\ps\test\PSTest.java)
+ - We need Event Hanlder. So extends DefaultHandler and override the method: 
+	- startDocument(): Call at the start of Document or XML.
+	- endDocument(): Call at the end of Document or XML.
+	- startElement(): Call at the element starting tag.
+	- endElement(): Call at the end element tag.
+	- character(): calll between the elemnt tag.
+ - [Example of event Handle Java file](PrintSAX\src\com\ps\handler\PrintHandler.java)
  
  
+## XML Validating:
+ - We nedd Scaema 
+	```
+	SchemaFactory sfactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		Schema poSchema = sfactory.newSchema(new StreamSource(
+				new File("D:\\PrintSAX\\src\\META-INF\\po.xsd")));
+	```
+ - And for SAX or DOM or XML Validation set the schema and then vaildate
+	```
+	SAXParserFactory factory = SAXParserFactory.newInstance();
+		factory.setSchema(poSchema);
+		factory.setValidating(true);
+	```
+ -  - [Example  of XML Java validation file](ValidateXml\src\com\vx\test\POValidatorTest.java)
 
+ 
 ## DOM:
 
  - Document Object Modal.
@@ -32,6 +61,15 @@ For processing the XML there are may  method. Some of method are :
  - Adding in DOM is called Node. There are serval type of Node like Document Node, Element Node, Text Node.
  - When it load the XML it place pointer to top level i.e root which is called Document Node.
  - To navigate between Them we can traverse.
+ - We need to have Document Parser. So we get Factory to have Document Parser Implementation and pass the XML. So that it will load the XML at once
+	```
+	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document doc = builder
+				.parse(new File(<XML FILE>));
+	```
+- When  the XML get loaded into the node Travel the node just like tree Traversal.
+ - [Example Of DOM Traversal Java Code](DomTraversal\src\com\dt\test\DomTraversalTest.java)
  
  
  
